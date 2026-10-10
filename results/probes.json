@@ -1,0 +1,287 @@
+{
+  "probe_accuracy_by_phenomenon": {
+    "negation": {
+      "mean": 0.0,
+      "count": 3
+    },
+    "plain": {
+      "mean": 0.833,
+      "count": 12
+    },
+    "sarcasm": {
+      "mean": 0.0,
+      "count": 2
+    },
+    "very_short": {
+      "mean": 0.5,
+      "count": 2
+    }
+  },
+  "probes": [
+    {
+      "text": "Ndishimye cyane uyu munsi",
+      "gloss": "I am very happy today",
+      "phenomenon": "plain",
+      "intended": "positive",
+      "pred": "positive",
+      "conf": 0.981,
+      "correct": true
+    },
+    {
+      "text": "Uyu muziki ni mwiza cyane",
+      "gloss": "This music is very good",
+      "phenomenon": "plain",
+      "intended": "positive",
+      "pred": "positive",
+      "conf": 0.985,
+      "correct": true
+    },
+    {
+      "text": "Murakoze cyane ku bufasha bwanyu",
+      "gloss": "Thank you very much for your help",
+      "phenomenon": "plain",
+      "intended": "positive",
+      "pred": "positive",
+      "conf": 0.961,
+      "correct": true
+    },
+    {
+      "text": "Amavubi yatsinze! Twishimye cyane 🇷🇼",
+      "gloss": "Amavubi won! We are very happy",
+      "phenomenon": "plain",
+      "intended": "positive",
+      "pred": "positive",
+      "conf": 0.967,
+      "correct": true
+    },
+    {
+      "text": "Imana ishimwe, umwana wanjye yarakize",
+      "gloss": "Praise God, my child has recovered",
+      "phenomenon": "plain",
+      "intended": "positive",
+      "pred": "positive",
+      "conf": 0.99,
+      "correct": true
+    },
+    {
+      "text": "Ndababaye cyane",
+      "gloss": "I am very sad",
+      "phenomenon": "plain",
+      "intended": "negative",
+      "pred": "negative",
+      "conf": 0.39,
+      "correct": true
+    },
+    {
+      "text": "Iyi serivisi ni mbi cyane",
+      "gloss": "This service is very bad",
+      "phenomenon": "plain",
+      "intended": "negative",
+      "pred": "neutral",
+      "conf": 0.631,
+      "correct": false
+    },
+    {
+      "text": "Ibiciro biri hejuru cyane, abantu barashonje",
+      "gloss": "Prices are very high, people are hungry",
+      "phenomenon": "plain",
+      "intended": "negative",
+      "pred": "negative",
+      "conf": 0.602,
+      "correct": true
+    },
+    {
+      "text": "Amavubi yongeye gutsindwa, birababaje",
+      "gloss": "Amavubi lost again, it is sad",
+      "phenomenon": "plain",
+      "intended": "negative",
+      "pred": "neutral",
+      "conf": 0.638,
+      "correct": false
+    },
+    {
+      "text": "Inama izaba ejo saa tatu za mu gitondo",
+      "gloss": "The meeting will be tomorrow at 9am",
+      "phenomenon": "plain",
+      "intended": "neutral",
+      "pred": "neutral",
+      "conf": 0.957,
+      "correct": true
+    },
+    {
+      "text": "Minisiteri y'Uburezi yatangaje ingengabihe nshya y'amashuri",
+      "gloss": "The Ministry of Education announced a new school calendar",
+      "phenomenon": "plain",
+      "intended": "neutral",
+      "pred": "neutral",
+      "conf": 0.893,
+      "correct": true
+    },
+    {
+      "text": "Ese ejo hazaba imvura?",
+      "gloss": "Will it rain tomorrow?",
+      "phenomenon": "plain",
+      "intended": "neutral",
+      "pred": "neutral",
+      "conf": 0.956,
+      "correct": true
+    },
+    {
+      "text": "Ntabwo ari byiza",
+      "gloss": "It is not good",
+      "phenomenon": "negation",
+      "intended": "negative",
+      "pred": "positive",
+      "conf": 0.7,
+      "correct": false
+    },
+    {
+      "text": "Ntabwo nishimiye ibyo wakoze",
+      "gloss": "I am not pleased with what you did",
+      "phenomenon": "negation",
+      "intended": "negative",
+      "pred": "positive",
+      "conf": 0.937,
+      "correct": false
+    },
+    {
+      "text": "Si bibi na gato",
+      "gloss": "It is not bad at all",
+      "phenomenon": "negation",
+      "intended": "positive",
+      "pred": "negative",
+      "conf": 0.476,
+      "correct": false
+    },
+    {
+      "text": "Wowe uri umuhanga pe 😂😂",
+      "gloss": "You are really clever 😂😂 (mocking)",
+      "phenomenon": "sarcasm",
+      "intended": "negative",
+      "pred": "positive",
+      "conf": 0.444,
+      "correct": false
+    },
+    {
+      "text": "Ni byiza cyane kubura amazi iminsi itatu 🙄",
+      "gloss": "It is great to have no water for three days 🙄",
+      "phenomenon": "sarcasm",
+      "intended": "negative",
+      "pred": "neutral",
+      "conf": 0.648,
+      "correct": false
+    },
+    {
+      "text": "Byiza",
+      "gloss": "Good",
+      "phenomenon": "very_short",
+      "intended": "positive",
+      "pred": "positive",
+      "conf": 0.97,
+      "correct": true
+    },
+    {
+      "text": "Oya",
+      "gloss": "No",
+      "phenomenon": "very_short",
+      "intended": "negative",
+      "pred": "neutral",
+      "conf": 0.936,
+      "correct": false
+    }
+  ],
+  "kinnews_headlines": {
+    "n": 300,
+    "pred_distribution": {
+      "neutral": 0.833,
+      "positive": 0.107,
+      "negative": 0.06
+    },
+    "mean_confidence": 0.864,
+    "examples": [
+      {
+        "text": "\nUretse SIDA, menya indwara umubyeyi yakwanduza umwana mu gihe amutwite\n",
+        "pred": "neutral",
+        "conf": 0.884
+      },
+      {
+        "text": "\nGasabo: Umurambo w’umugabo wasanzwe mu modoka\n",
+        "pred": "neutral",
+        "conf": 0.716
+      },
+      {
+        "text": "Rimwe na rimwe aya makosa hari abakobwa ananira kwihanganira",
+        "pred": "neutral",
+        "conf": 0.632
+      },
+      {
+        "text": "Byinshi ku kayunguruzo k’imirasire y’izuba gakomeje guhangayikisha Isi",
+        "pred": "neutral",
+        "conf": 0.957
+      },
+      {
+        "text": "Ikipe ya Rayon Sports  yahanishijwe gucibwa ibihumbi 15 by’amadolari",
+        "pred": "neutral",
+        "conf": 0.94
+      },
+      {
+        "text": "Tour du Rwanda: Eritrea ikomeje kwigaranzura u Rwanda",
+        "pred": "neutral",
+        "conf": 0.886
+      },
+      {
+        "text": "Ubuhamya bwa Olga Lorie, umuhanzikazi wavuye i Burundi agana mu Rwanda kuhashakira amaronko (Video)",
+        "pred": "neutral",
+        "conf": 0.89
+      },
+      {
+        "text": "Chameleon yitakanye iby’amakimbirane ye na Diamond",
+        "pred": "neutral",
+        "conf": 0.966
+      },
+      {
+        "text": "Meddy yashyize hanze indrimbo yuje amarangamutima- “Yumve hano”",
+        "pred": "neutral",
+        "conf": 0.96
+      },
+      {
+        "text": "Bari kubarira iminsi ku ntoki ari na ko bashimagiza perezida Kagame",
+        "pred": "neutral",
+        "conf": 0.888
+      }
+    ]
+  },
+  "non_kinyarwanda": [
+    {
+      "text": "I love this so much, best day ever!",
+      "lang": "english",
+      "pred": "positive",
+      "conf": 0.965
+    },
+    {
+      "text": "This government is terrible",
+      "lang": "english",
+      "pred": "neutral",
+      "conf": 0.366
+    },
+    {
+      "text": "Je suis très content aujourd'hui",
+      "lang": "french",
+      "pred": "positive",
+      "conf": 0.952
+    },
+    {
+      "text": "Nimefurahi sana leo",
+      "lang": "swahili",
+      "pred": "positive",
+      "conf": 0.968
+    },
+    {
+      "text": "asdf qwerty zxcv",
+      "lang": "nonsense",
+      "pred": "neutral",
+      "conf": 0.949
+    }
+  ],
+  "afrisenti_test_mean_confidence_first300": 0.833
+}

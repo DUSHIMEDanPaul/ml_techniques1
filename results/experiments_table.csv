@@ -1,0 +1,18 @@
+Experiment,Family,Configuration,Dev macro-F1,Test accuracy,Test macro-P,Test macro-R,Test macro-F1,Test weighted-F1,Test macro-F1 (3 seeds mean ± std),Train time (s)
+majority_class,baseline,strategy=most_frequent,0.1839,0.383,0.1277,0.3333,0.1846,0.2122,-,-
+tfidf_word_nb,classical,alpha=0.1,0.5934,0.5653,0.5802,0.564,0.5694,0.5661,-,-
+tfidf_word_lr,classical,C=5,0.5874,0.5702,0.5769,0.5748,0.5754,0.5699,-,-
+tfidf_char_lr,classical,C=1,0.6319,0.6072,0.6098,0.6178,0.6094,0.6029,-,-
+tfidf_word+char_svm,classical,C=0.05,0.6431,0.6072,0.6125,0.6135,0.6106,0.6052,-,-
+bilstm_random,rnn,"BiLSTM, emb=random, pool=maxmean",0.5632,0.5322,0.5797,0.5164,0.5251,0.5282,0.5119 ± 0.0215,-
+bilstm_w2v_ft,rnn,"BiLSTM, emb=w2v, pool=maxmean",0.6467,0.6023,0.612,0.605,0.6061,0.6019,0.6184 ± 0.0092,-
+bilstm_w2v_frozen,rnn,"BiLSTM, emb=w2v (frozen), pool=maxmean",0.6591,0.6228,0.628,0.6263,0.6252,0.6213,0.6182 ± 0.0106,-
+bilstm_fasttext_ft,rnn,"BiLSTM, emb=fasttext, pool=maxmean",0.6611,0.6365,0.6543,0.6353,0.6397,0.6364,0.6302 ± 0.0067,-
+bigru_fasttext_attn,rnn,"BiGRU, emb=fasttext, pool=attention",0.6614,0.6413,0.6578,0.6421,0.6453,0.6408,0.6351 ± 0.0079,-
+bilstm_fasttext_attn,rnn,"BiLSTM, emb=fasttext, pool=attention",0.6544,0.6481,0.6768,0.6447,0.6527,0.6491,0.6349 ± 0.0128,-
+afriberta_small_frozen,transformer,"afriberta_small, frozen_encoder, lr=0.001, trainable=0.59M",0.5811,0.5887,0.5938,0.5838,0.5871,0.5883,-,23
+afriberta_small_ft,transformer,"afriberta_small, full_finetune, lr=5e-05, trainable=83.11M",0.6113,0.6121,0.6257,0.6069,0.613,0.6124,-,1288
+kinyabert_small_ft,transformer,"KinyaBERT-small, full_finetune, lr=5e-05, trainable=66.56M",0.639,0.6394,0.6433,0.6447,0.6415,0.6385,-,69
+afroxlmr_small_lora,transformer,"afro-xlmr-small, lora, lr=0.0005, trainable=1.18M",0.6522,0.653,0.6582,0.6565,0.6556,0.6526,-,162
+afroxlmr_base_ft,transformer,"afro-xlmr-base, full_finetune, lr=2e-05, trainable=278.05M",0.6685,0.6637,0.6783,0.661,0.6673,0.6647,-,178
+afroxlmr_small_ft,transformer,"afro-xlmr-small, full_finetune, lr=3e-05, trainable=140.27M",0.6686,0.6793,0.6956,0.6752,0.6821,0.6801,-,257
