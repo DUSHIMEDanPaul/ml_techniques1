@@ -1,0 +1,26 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/69 [00:00<?, ?it/s]Loading weights: 100%|██████████| 69/69 [00:00<00:00, 43816.35it/s]
+castorini/afriberta_small: trainable 83,106,051 / 83,106,051 params
+  ep1 step 0/200 loss 1.000 (3s)
+  ep1 step 50/200 loss 1.037 (69s)
+  ep1 step 100/200 loss 0.912 (138s)
+  ep1 step 150/200 loss 0.816 (208s)
+epoch 1: train loss 0.9877  dev macro-F1 0.5543
+  ep2 step 0/200 loss 0.719 (296s)
+  ep2 step 50/200 loss 0.515 (369s)
+  ep2 step 100/200 loss 0.308 (444s)
+  ep2 step 150/200 loss 0.540 (516s)
+epoch 2: train loss 0.7198  dev macro-F1 0.6113
+  ep3 step 0/200 loss 0.527 (668s)
+  ep3 step 50/200 loss 0.232 (749s)
+  ep3 step 100/200 loss 0.756 (824s)
+  ep3 step 150/200 loss 1.262 (892s)
+epoch 3: train loss 0.4435  dev macro-F1 0.5917
+  ep4 step 0/200 loss 0.496 (980s)
+  ep4 step 50/200 loss 0.680 (1048s)
+  ep4 step 100/200 loss 0.163 (1111s)
+  ep4 step 150/200 loss 0.099 (1176s)
+epoch 4: train loss 0.2093  dev macro-F1 0.5964
+[afriberta_small_ft] dev macro-F1=0.6113  test macro-F1=0.6130 acc=0.6121
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.80it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.79it/s]
+saved to C:\Users\USER\Downloads\ml_summative\ml_techniques1\models\afriberta_small_ft

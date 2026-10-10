@@ -1,0 +1,26 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/101 [00:00<?, ?it/s]Loading weights: 100%|██████████| 101/101 [00:00<00:00, 23269.69it/s]
+jean-paul/KinyaBERT-small: trainable 66,556,419 / 66,556,419 params on cuda
+  ep1 step 0/200 loss 1.097 (1s)
+  ep1 step 50/200 loss 1.049 (4s)
+  ep1 step 100/200 loss 0.692 (8s)
+  ep1 step 150/200 loss 0.690 (12s)
+epoch 1: train loss 0.9008  dev macro-F1 0.6023
+  ep2 step 0/200 loss 0.902 (17s)
+  ep2 step 50/200 loss 0.525 (21s)
+  ep2 step 100/200 loss 0.733 (25s)
+  ep2 step 150/200 loss 0.650 (28s)
+epoch 2: train loss 0.5688  dev macro-F1 0.6390
+  ep3 step 0/200 loss 0.336 (33s)
+  ep3 step 50/200 loss 0.315 (37s)
+  ep3 step 100/200 loss 0.757 (41s)
+  ep3 step 150/200 loss 0.053 (45s)
+epoch 3: train loss 0.2274  dev macro-F1 0.6143
+  ep4 step 0/200 loss 0.192 (50s)
+  ep4 step 50/200 loss 0.002 (54s)
+  ep4 step 100/200 loss 0.002 (57s)
+  ep4 step 150/200 loss 0.003 (61s)
+epoch 4: train loss 0.0634  dev macro-F1 0.6218
+[kinyabert_small_ft] dev macro-F1=0.6390  test macro-F1=0.6415 acc=0.6394
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.89it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.89it/s]
+saved to /content/ml_techniques1/models/kinyabert_small_ft

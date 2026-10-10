@@ -1,0 +1,44 @@
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 4327.97it/s]
+[transformers] [1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: Davlan/afro-xlmr-small
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Davlan/afro-xlmr-small: trainable 1,182,723 / 141,456,390 params on cuda
+  ep1 step 0/200 loss 1.092 (1s)
+  ep1 step 50/200 loss 1.047 (7s)
+  ep1 step 100/200 loss 0.975 (13s)
+  ep1 step 150/200 loss 1.262 (19s)
+epoch 1: train loss 0.9992  dev macro-F1 0.5380
+  ep2 step 0/200 loss 0.756 (29s)
+  ep2 step 50/200 loss 0.939 (36s)
+  ep2 step 100/200 loss 0.717 (42s)
+  ep2 step 150/200 loss 0.827 (49s)
+epoch 2: train loss 0.8454  dev macro-F1 0.6330
+  ep3 step 0/200 loss 0.764 (59s)
+  ep3 step 50/200 loss 0.776 (66s)
+  ep3 step 100/200 loss 0.696 (72s)
+  ep3 step 150/200 loss 0.628 (79s)
+epoch 3: train loss 0.7537  dev macro-F1 0.6364
+  ep4 step 0/200 loss 0.973 (90s)
+  ep4 step 50/200 loss 0.778 (97s)
+  ep4 step 100/200 loss 0.335 (104s)
+  ep4 step 150/200 loss 0.796 (111s)
+epoch 4: train loss 0.6882  dev macro-F1 0.6522
+  ep5 step 0/200 loss 0.606 (122s)
+  ep5 step 50/200 loss 0.633 (129s)
+  ep5 step 100/200 loss 0.655 (137s)
+  ep5 step 150/200 loss 0.624 (143s)
+epoch 5: train loss 0.6357  dev macro-F1 0.6401
+[afroxlmr_small_lora] dev macro-F1=0.6522  test macro-F1=0.6556 acc=0.6530

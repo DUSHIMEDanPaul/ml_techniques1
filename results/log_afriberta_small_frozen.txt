@@ -1,0 +1,24 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/69 [00:00<?, ?it/s]Loading weights: 100%|██████████| 69/69 [00:00<00:00, 22153.01it/s]
+castorini/afriberta_small: trainable 592,899 / 83,106,051 params on cuda
+  ep1 step 0/200 loss 1.108 (0s)
+  ep1 step 50/200 loss 0.966 (1s)
+  ep1 step 100/200 loss 0.846 (2s)
+  ep1 step 150/200 loss 1.014 (3s)
+epoch 1: train loss 1.0226  dev macro-F1 0.4487
+  ep2 step 0/200 loss 0.803 (6s)
+  ep2 step 50/200 loss 0.979 (7s)
+  ep2 step 100/200 loss 1.052 (8s)
+  ep2 step 150/200 loss 1.047 (9s)
+epoch 2: train loss 0.9544  dev macro-F1 0.5811
+  ep3 step 0/200 loss 0.834 (11s)
+  ep3 step 50/200 loss 0.931 (12s)
+  ep3 step 100/200 loss 1.161 (13s)
+  ep3 step 150/200 loss 0.672 (14s)
+epoch 3: train loss 0.9373  dev macro-F1 0.5596
+  ep4 step 0/200 loss 0.856 (16s)
+  ep4 step 50/200 loss 0.909 (17s)
+  ep4 step 100/200 loss 0.727 (18s)
+  ep4 step 150/200 loss 0.972 (18s)
+epoch 4: train loss 0.9086  dev macro-F1 0.5702
+[afriberta_small_frozen] dev macro-F1=0.5811  test macro-F1=0.5871 acc=0.5887

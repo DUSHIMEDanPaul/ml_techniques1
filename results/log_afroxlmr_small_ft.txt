@@ -1,0 +1,31 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 4723.53it/s]
+Davlan/afro-xlmr-small: trainable 140,273,667 / 140,273,667 params on cuda
+  ep1 step 0/200 loss 1.096 (2s)
+  ep1 step 50/200 loss 1.155 (13s)
+  ep1 step 100/200 loss 0.968 (23s)
+  ep1 step 150/200 loss 0.740 (34s)
+epoch 1: train loss 0.9916  dev macro-F1 0.5929
+  ep2 step 0/200 loss 0.691 (49s)
+  ep2 step 50/200 loss 0.731 (60s)
+  ep2 step 100/200 loss 0.857 (72s)
+  ep2 step 150/200 loss 0.988 (83s)
+epoch 2: train loss 0.7812  dev macro-F1 0.6355
+  ep3 step 0/200 loss 0.527 (99s)
+  ep3 step 50/200 loss 0.589 (111s)
+  ep3 step 100/200 loss 0.552 (123s)
+  ep3 step 150/200 loss 0.613 (134s)
+epoch 3: train loss 0.5969  dev macro-F1 0.6315
+  ep4 step 0/200 loss 0.748 (149s)
+  ep4 step 50/200 loss 0.699 (161s)
+  ep4 step 100/200 loss 0.283 (172s)
+  ep4 step 150/200 loss 0.447 (184s)
+epoch 4: train loss 0.4478  dev macro-F1 0.6686
+  ep5 step 0/200 loss 0.750 (199s)
+  ep5 step 50/200 loss 0.135 (211s)
+  ep5 step 100/200 loss 0.330 (222s)
+  ep5 step 150/200 loss 0.535 (234s)
+epoch 5: train loss 0.3340  dev macro-F1 0.6638
+[afroxlmr_small_ft] dev macro-F1=0.6686  test macro-F1=0.6821 acc=0.6793
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:07<00:00,  7.21s/it]Writing model shards: 100%|██████████| 1/1 [00:07<00:00,  7.21s/it]
+saved to /content/ml_techniques1/models/afroxlmr_small_ft
