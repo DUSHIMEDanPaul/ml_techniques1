@@ -1,0 +1,133 @@
+{
+  "raw_sizes": {
+    "train": 3302,
+    "dev": 827,
+    "test": 1026
+  },
+  "cleaning": {
+    "train_removed_conflicting_label_duplicates": 18,
+    "train_removed_exact_duplicates": 34,
+    "train_removed_overlap_with_dev_test": 59,
+    "train_removed_empty_after_cleaning": 0
+  },
+  "agreement_matched": {
+    "train": 2926,
+    "dev": 771,
+    "test": 958
+  },
+  "agreement_dist": {
+    "train": {
+      "1": 10,
+      "2": 1974,
+      "3": 942
+    },
+    "dev": {
+      "0": 3,
+      "1": 6,
+      "2": 516,
+      "3": 246
+    },
+    "test": {
+      "0": 3,
+      "1": 6,
+      "2": 662,
+      "3": 287
+    }
+  },
+  "sizes": {
+    "train": 3191,
+    "dev": 827,
+    "test": 1026
+  },
+  "label_dist": {
+    "train": {
+      "negative": 1098,
+      "neutral": 1220,
+      "positive": 873
+    },
+    "dev": {
+      "negative": 287,
+      "neutral": 315,
+      "positive": 225
+    },
+    "test": {
+      "negative": 355,
+      "neutral": 393,
+      "positive": 278
+    }
+  },
+  "tokens_mean": {
+    "train": 13.53,
+    "dev": 13.37,
+    "test": 13.64
+  },
+  "tokens_max": {
+    "train": 41,
+    "dev": 30,
+    "test": 76
+  },
+  "pct_with_emoji": {
+    "train": 20.2,
+    "dev": 21.3,
+    "test": 20.3
+  },
+  "train_vocab_size": 15356,
+  "train_hapax_pct": 73.6,
+  "oov_token_rate": {
+    "dev": 25.9,
+    "test": 26.3
+  },
+  "top_tokens_per_class": {
+    "negative": [
+      "😂",
+      "🤣",
+      "😭",
+      "<num>",
+      "muri",
+      "ariko",
+      "kuri",
+      "ibyo",
+      "cyane",
+      "kandi",
+      "nawe",
+      "ikibazo",
+      "niba",
+      "hari",
+      "umuntu"
+    ],
+    "neutral": [
+      "<num>",
+      "😂",
+      "muri",
+      "kuri",
+      "🤣",
+      "😭",
+      "rwanda",
+      "cyane",
+      "munsi",
+      "ariko",
+      "ibyo",
+      "gusa",
+      "hari",
+      "niba",
+      "kandi"
+    ],
+    "positive": [
+      "<num>",
+      "cyane",
+      "muri",
+      "rwanda",
+      "kandi",
+      "neza",
+      "kuri",
+      "😂",
+      "🙏",
+      "🇷🇼",
+      "imana",
+      "mwiza",
+      "kuko",
+      "nawe",
+      "munsi"
+    ]
+  }
+}
