@@ -44,13 +44,16 @@ def main():
     ap.add_argument("--user", required=True)
     ap.add_argument("--model_repo", default="kinyarwanda-sentiment-afroxlmr")
     ap.add_argument("--space", default="kinyarwanda-sentiment")
+    ap.add_argument("--skip_model", action="store_true",
+                    help="model already pushed (e.g. with deploy/push_model.py); only create the Space")
     a = ap.parse_args()
     api = HfApi()
     model_id, space_id = f"{a.user}/{a.model_repo}", f"{a.user}/{a.space}"
 
-    api.create_repo(model_id, repo_type="model", exist_ok=True)
-    api.upload_folder(folder_path=str(ROOT / "models" / "final"), repo_id=model_id, repo_type="model")
-    print(f"model uploaded: https://huggingface.co/{model_id}")
+    if not a.skip_model:
+        api.create_repo(model_id, repo_type="model", exist_ok=True)
+        api.upload_folder(folder_path=str(ROOT / "models" / "final"), repo_id=model_id, repo_type="model")
+        print(f"model uploaded: https://huggingface.co/{model_id}")
 
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
