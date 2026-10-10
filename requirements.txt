@@ -1,0 +1,17 @@
+# core (training + evaluation)
+torch>=2.2
+transformers>=4.40
+peft>=0.10
+scikit-learn>=1.3
+pandas>=2.0
+numpy
+scipy
+gensim>=4.3
+emoji>=2.8
+sentencepiece
+protobuf
+matplotlib
+tabulate
+joblib
+# web app
+gradio>=4.0

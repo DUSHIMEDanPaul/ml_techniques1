@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+# large / re-downloadable artefacts
+data/external/
+models/*/
+models/*.kv
+models/*.npy
+!models/README.md
+.gradio/
+flagged/
+cloud_bundle.zip
+results.zip
+final_model.zip
