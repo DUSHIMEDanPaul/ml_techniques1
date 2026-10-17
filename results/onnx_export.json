@@ -1,0 +1,13 @@
+{
+  "pytorch_test_macro_f1": 0.6821,
+  "onnx_fp32": {
+    "size_mb": 561,
+    "agreement_with_pytorch": 1.0,
+    "test_macro_f1": 0.6821
+  },
+  "onnx_int8_dynamic": {
+    "size_mb": 141,
+    "agreement_with_pytorch": 0.7729,
+    "test_macro_f1": 0.5863
+  }
+}

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kinyarwanda Sentiment</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --border: #e2e2e0;
+    --accent: #2457c5; --neg: #c8463d; --neu: #8a8a8f; --pos: #2e8b57; --warn-bg: #fff6e0; --warn: #8a5a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141416; --card: #1e1e21; --text: #ececee; --muted: #a0a0a6; --border: #333338;
+      --accent: #7aa2ff; --neg: #ff7b72; --neu: #9a9aa0; --pos: #5fd394; --warn-bg: #3a2f12; --warn: #f2c66d;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: 24px 16px; }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+  textarea { width: 100%; min-height: 110px; resize: vertical; font: inherit; color: var(--text);
+             background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+  button { font: inherit; cursor: pointer; border-radius: 8px; }
+  #go { background: var(--accent); color: #fff; border: 0; padding: 9px 20px; margin-top: 10px; font-weight: 600; }
+  #go:disabled { opacity: .5; cursor: wait; }
+  .examples { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .examples button { background: transparent; color: var(--text); border: 1px solid var(--border); padding: 5px 10px; font-size: .85rem; }
+  .row { display: grid; grid-template-columns: 80px 1fr 52px; align-items: center; gap: 10px; margin: 8px 0; }
+  .bar { height: 14px; background: var(--bg); border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .fill { height: 100%; width: 0; transition: width .4s; }
+  .verdict { font-size: 1.15rem; font-weight: 600; margin: 0 0 6px; }
+  .warn { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 8px 12px; margin-top: 10px; font-size: .9rem; }
+  #status { color: var(--muted); font-size: .9rem; margin-top: 8px; }
+  .small { color: var(--muted); font-size: .85rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Kinyarwanda Tweet Sentiment Classifier</h1>
+  <p class="sub">Type a sentence or tweet in <b>Kinyarwanda</b>. The model predicts whether it is
+    <i>negative</i>, <i>neutral</i> or <i>positive</i>.</p>
+
+  <div class="card">
+    <label for="txt" class="small">Kinyarwanda text</label>
+    <textarea id="txt" placeholder="Andika hano..."></textarea>
+    <button id="go" disabled>Loading model…</button>
+    <div id="status">Downloading the model (first visit only, it is cached afterwards)…</div>
+    <div class="examples" id="examples"></div>
+  </div>
+
+  <div class="card" id="result" hidden>
+    <p class="verdict" id="verdict"></p>
+    <div id="bars"></div>
+    <div class="warn" id="warn" hidden>Low confidence: the model is unsure. This often happens with sarcasm,
+      mixed sentiment, very short inputs or text that is not Kinyarwanda.</div>
+  </div>
+
+  <div class="card small">
+    <b>About.</b> AfroXLMR-small (Alabi et al., 2022) fine-tuned on the AfriSenti-SemEval 2023 Kinyarwanda
+    Twitter dataset (Muhammad et al., 2023); test macro-F1 0.68. The model runs entirely in your browser
+    (ONNX + <a href="https://huggingface.co/docs/transformers.js" target="_blank" rel="noopener">transformers.js</a>);
+    your text is not sent to a server.
+    <br><br><b>Limitations.</b> Trained on ~3.2k tweets only. Negation (<i>ntabwo…</i>), sarcasm and mocking emojis
+    (😂) are frequent sources of error, and the model is over-confident on text that is not Kinyarwanda.
+    Not suitable for high-stakes decisions.
+  </div>
+</main>
+
+<script type="module">
+  import { pipeline } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1";
+
+  const MODEL_ID = "DanpaulDUSHIME/kinyarwanda-sentiment-afroxlmr";
+  const DTYPE = "fp32";           // which onnx/ file to load: fp32 -> model.onnx, fp16 -> model_fp16.onnx, q8 -> model_quantized.onnx
+  const LOW_CONFIDENCE = 0.55;
+  const LABELS = ["negative", "neutral", "positive"];
+  const COLORS = { negative: "var(--neg)", neutral: "var(--neu)", positive: "var(--pos)" };
+  const EXAMPLES = [
+    "Ndishimye cyane! Imana ishimwe ku bw'ibyiza yankoreye 🙏",
+    "Uyu mukino wari mwiza cyane, abakinnyi bacu bitwaye neza",
+    "Ibi bintu birambabaje cyane, ntabwo byari bikwiye na gato",
+    "Inama izabera i Kigali ku wa gatatu saa tatu za mu gitondo",
+    "Ese ubu koko ibi ni ibiki? Ni agahomamunwa 😡",
+    "Wowe uri umuhanga pe 😂😂",
+  ];
+
+  // Same normalisation as src/preprocess.py::light_clean (used at training time)
+  function lightClean(t) {
+    return String(t)
+      .replace(/https?:\/\/\S+|www\.\S+/g, " ")
+      .replace(/@[\p{L}\p{N}_]+/gu, "@user")
+      .replace(/(@user\s*){2,}/g, "@user ")
+      .replace(/#([\p{L}\p{N}_]+)/gu, "$1")
+      .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+      .replace(/\s+/g, " ").trim();
+  }
+
+  const $ = (id) => document.getElementById(id);
+  const txt = $("txt"), go = $("go"), status = $("status");
+
+  for (const ex of EXAMPLES) {
+    const b = document.createElement("button");
+    b.textContent = ex.length > 38 ? ex.slice(0, 36) + "…" : ex;
+    b.title = ex;
+    b.onclick = () => { txt.value = ex; if (!go.disabled) classify(); };
+    $("examples").appendChild(b);
+  }
+
+  let clf;
+  try {
+    clf = await pipeline("text-classification", MODEL_ID, {
+      dtype: DTYPE,
+      progress_callback: (p) => {
+        if (p.status === "progress" && p.file && p.file.endsWith(".onnx"))
+          status.textContent = `Downloading model… ${Math.round(p.progress)}%`;
+      },
+    });
+    go.disabled = false; go.textContent = "Classify";
+    status.textContent = "Model ready.";
+  } catch (e) {
+    status.textContent = "Could not load the model: " + e.message;
+    go.textContent = "Unavailable";
+  }
+
+  async function classify() {
+    const text = txt.value.trim();
+    if (!text) { status.textContent = "Please enter a sentence in Kinyarwanda."; return; }
+    go.disabled = true; status.textContent = "Classifying…";
+    const out = await clf(lightClean(text), { top_k: null });
+    const probs = Object.fromEntries(out.map((o) => [o.label.toLowerCase(), o.score]));
+    const [top, conf] = Object.entries(probs).sort((a, b) => b[1] - a[1])[0];
+    $("verdict").textContent = `Prediction: ${top} (confidence ${Math.round(conf * 100)}%)`;
+    $("verdict").style.color = COLORS[top];
+    $("bars").innerHTML = LABELS.map((l) => `
+      <div class="row"><span>${l}</span>
+        <div class="bar"><div class="fill" style="width:${(probs[l] * 100).toFixed(1)}%;background:${COLORS[l]}"></div></div>
+        <span>${(probs[l] * 100).toFixed(0)}%</span></div>`).join("");
+    $("warn").hidden = conf >= LOW_CONFIDENCE;
+    $("result").hidden = false;
+    status.textContent = "";
+    go.disabled = false;
+  }
+  go.onclick = classify;
+  txt.addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) classify(); });
+</script>
+</body>
+</html>
